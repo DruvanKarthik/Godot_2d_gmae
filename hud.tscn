@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://dluggk73pa4qp"]
+
+[ext_resource type="Script" path="res://hud.gd" id="1_m4qkm"]
+[ext_resource type="FontFile" uid="uid://xn2pwe2vdvhb" path="res://fonts/Xolonium-Regular.ttf" id="1_xp70b"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_m4qkm")
+
+[node name="ScoreLable" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -237.0
+offset_right = 135.0
+offset_bottom = 73.0
+grow_horizontal = 2
+scale = Vector2(1.2841, 0.772592)
+theme_override_fonts/font = ExtResource("1_xp70b")
+theme_override_font_sizes/font_size = 60
+text = "0"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="MessageLable" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -241.0
+offset_top = -41.0
+offset_right = 241.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_xp70b")
+theme_override_font_sizes/font_size = 42
+text = "Doge The creeps!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="."]
+offset_left = 169.0
+offset_top = 399.0
+offset_right = 346.0
+offset_bottom = 485.0
+theme_override_fonts/font = ExtResource("1_xp70b")
+theme_override_font_sizes/font_size = 64
+text = "Start"
+
+[node name="MessageTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]

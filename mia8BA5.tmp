@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://brs0e8j6oe1ke"]
+
+[ext_resource type="PackedScene" uid="uid://d2p14l0s72g30" path="res://mob.tscn" id="1_cwoq7"]
+[ext_resource type="Script" path="res://mian.gd" id="1_hc624"]
+
+[sub_resource type="Curve2D" id="Curve2D_n8uxe"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -2, -2, 0, 0, 0, 0, 1148, 0, 0, 0, 0, 0, 1146, 642, 0, 0, 0, 0, -2, 644, 0, 0, 0, 0, -2, -2)
+}
+point_count = 5
+
+[node name="mian" type="Node"]
+script = ExtResource("1_hc624")
+mob_scene = ExtResource("1_cwoq7")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 38.0
+offset_bottom = 38.0
+scale = Vector2(28.8103, 16.3549)
+color = Color(0.00392157, 0.305882, 0.419608, 0.960784)
+
+[node name="MobPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_n8uxe")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="MobSpwanLocation" type="PathFollow2D" parent="MobPath"]
+position = Vector2(-2, -2)
+rotation = 0.00173913
+
+[node name="MobTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
